@@ -1,0 +1,8 @@
+body{font-family:"Microsoft YaHei","\5FAE\8F6F\96C5\9ED1";}
+.ui-dialog-title{border-bottom:3px solid #5DB2FF; overflow:visible; font-size:16px;}
+.ui-dialog-autofocus{background-color:#5DB2FF}
+.ui-popup-modal{display:block;}
+.form-title{color:#999;}
+.form-title b{font-weight:normal;}
+.ui-popup-modal .ui-dialog{font-family:"Microsoft YaHei","\5FAE\8F6F\96C5\9ED1";}
+.ui-dialog-button{float:left;}

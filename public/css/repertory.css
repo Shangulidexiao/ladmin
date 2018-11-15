@@ -1,0 +1,97 @@
+/* 公用样式 */
+body{font-family:"Microsoft YaHei","\5FAE\8F6F\96C5\9ED1";}
+.input-icon > INPUT{*padding:0!important;}
+.clearfix:after{ content:""; display:block; height:0; overflow:hidden; clear:both; visibility:hidden;}
+.rep-header-height{height:44px;}
+.rep-header-height>.widget-caption{line-height:44px;}
+.rep-header-btn{margin: 5px 12px 0 5px;}
+.rep-mt{margin-top:10px;}
+.rep-height{height:30px;}
+.rep-ml{margin-left:10px!important;}
+.rep-mb{margin-bottom:20px;}
+.rep-fr{float:right;}
+.rep-fl{float:left;}
+.rep-table-body{background:#fbfbfb;-webkit-box-shadow: 1px 0 10px 1px rgba(0, 0, 0, 0.3); -moz-box-shadow: 1px 0 10px 1px rgba(0, 0, 0, 0.3); box-shadow: 1px 0 10px 1px rgba(0, 0, 0, 0.3); padding:12px;}
+.table-middle td{vertical-align:middle!important;}
+b{font-weight:normal;}
+button{margin:0; padding:0; border:0;}
+/* input select这种宽度100%的样式 */
+.rep-full-width{width:100%; height:33px;}
+
+/* label空的时候占据空间 */
+label.ht{line-height:18px; height:18px;}
+
+/* 表单底部按钮 */
+.rep-form-btn{padding:10px 0; border-top:1px solid #e6e6e6;}
+.rep-form-btn a{width:100px; margin-right:20px;}
+
+/* 弹窗背景色 */
+.ui-dialog-content body:before{background:#fff;}
+
+
+/* 翻页清除浮动 */
+.DTTTFooter{clear:both;}
+.page-sidebar{*left:0;}
+
+
+/* 门店订单列表 */
+.rep-store-list-tab{float:left; margin:5px 0 0 10px;}
+.rep-order-table2{margin-left:-14px; padding:0; float:left; width:13%;}
+.rep-order-table1{float:left; width:87%;}
+.rep-order-table1 td{height:49px; *height:35px;}
+
+/* 审核信息表上传样式 */
+.repair-aptitude-img .aptitude-block{float:left; width:218px; height:134px; border:1px solid #e6e6e6; background:#fbfbfb;}
+.repair-aptitude-img a{display:block; float:right; width:100px;}
+.repair-close-icon{cursor:pointer; position: absolute; top: 15px; right: 10px; height: 28px; border-radius:50%; line-height: 28px; width: 28px; font-size: 34px; color: #999; text-align: center; text-decoration: none; font-family: "Arial";}
+.repair-close-icon:hover{background:#e8e8e8;}
+
+.repair-aptitude-example{display:none; position:fixed; z-index:201; top:50%; left:50%; margin-left:-332px; margin-top:-255px;}
+.show.repair-aptitude-example{display:block;}
+.repair-overlay{display:none; background:rgba(0, 0, 0, 0.1); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#19000000,endColorstr=#19000000); width:100%;height:100%;position:fixed;top:0;left:0;z-index:200;_position:absolute;_height:expression(documentElement.offsetHeight +"px");_top:expression(documentElement.scrollTop +"px");}
+.show.repair-overlay{display:block;}
+.re-unloading-btn{margin-bottom:14px; height:32px; position:relative; overflow:hidden; width:100px; float:right; z-index:8; *width:124px;}
+.re-unloading-btn input{width:100px; height:100%; position:absolute; display:block; top:0; left:0; opacity:0; filter: alpha(opacity=0);-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; font-size:60px;}
+.rep-check-btn{margin-bottom:14px;}
+
+/* 岗位及人员设置表样式 */
+.rep-tab{border-bottom:1px solid #ddd; margin-bottom:30px;}
+.rep-store-modify{display:none;}
+.rep-post-setting .widget-body{border:1px solid #ddd; background:#fff; border-top:0 none;}
+.rep-post-setting .btn{padding:4px 20px;}
+.rep-add-post{margin:0 0 30px 0;}
+.rep-add-post a.btn{float:left; padding:6px 12px;}
+.rep-add-post .rep-full-width{height:32px;}
+/* 弹层 */
+.rep-layer-table .row{padding-left:30px; margin:0;}
+
+/* 加载进度条 */
+.rep-progress-bar{width:500px; background:#ddd; margin:200px auto 0;}
+.rep-progress-word{margin:10px auto 0; text-align:center; font-size:16px; color:#333;}
+
+/* 加载失败 */
+.rep-faild-word{text-align:center; font-size:16px; color:#333; margin:150px auto 20px;}
+.rep-faile-btn{text-align:center;}
+.rep-faile-btn .btn{width:80px; margin:0 10px;}
+
+/* 带滚动自适应的表格，解决下拉被遮住问题 */
+.rep-table-body .table-scrollable > .table{margin-bottom:60px!important;}
+/**.rep-table-body .dropdown-menu{height:64px; overflow:auto;}*/
+
+/* 订单号加new标识 20161102 */
+.rep-table-body .table-scrollable > .table .order-number{position:relative;}
+.rep-table-body .table-scrollable > .table .order-number .new-icon{display:block; position:absolute; right:0; top:4px; width:28px; height:11px; background:url(../images/new-icon.png) no-repeat;}
+
+/* 添加库房设置等新项 20170103 */
+.rep-next-btn button{ width:104px;}
+
+/* 添加库房设置等新项 20170103 */
+.rep-next-btn{position:absolute; bottom:20px; left:12px;}
+.rep-next-btn button{ width:104px;}
+.rep-setup-height{position:relative; padding-bottom:50px;}
+.rep-depot-set{margin-bottom:70px;}
+
+/* 地图搜索框定位 20170117 */
+.rep-map-wapper{width:800px;height: 430px;border: 1px solid #d5d5d5; border-radius:4px;}
+.rep-map-engine{position:absolute; right:10px; top:10px; background:#fff; padding:2px 0 10px 10px; border:1px solid #d5d5d5; border-radius:4px; }
+.rep-map-location{position:absolute; right:10px; bottom:25px; background:#fff; padding:2px 10px 10px 10px; border:1px solid #d5d5d5; border-radius:4px;}

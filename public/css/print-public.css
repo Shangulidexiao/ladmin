@@ -1,0 +1,33 @@
+/* rest*/
+html,body,h1,h2,h3,h4,h5,h6,p,ul,li,ol,dl,dt,dd,div,span,a,b,i,strong,em,img{ padding:0; margin:0;}
+h1,h2,h3,h4,h5,h6{ font-size:100%; line-height:100%; font-weight:normal;}
+body{ font-size:12px;}
+li{ list-style:none;}
+a{ text-decoration:none; color:#666;}
+i,em{ font-style:normal;}
+strong,b{ font-weight:normal;}
+.fl{float:left;}
+.fr{float:right;}
+.clearfix:after{display:block;clear:both;content:'';}
+.clearfix{zoom:1;}
+input{outline:none; border:none 0;padding:0;}
+img{display:block; vertical-align: top}
+li{ list-style:none; vertical-align:top;}
+a img{ border:0; }
+img{display:block;}
+table,th,td,tr{padding:0;}
+table{border-collapse:collapse;}
+
+
+/*采购、核销、转出公用样式*/
+.print-wrap{width:800px;margin:0 auto;padding-top:20px;font-size: 14px;}
+.print-wrap h1{font-size:18px;font-weight: bold;text-align:center;height:30px;line-height: 30px;}
+.print-wrap .bill-time{height:30px;line-height: 30px;}
+.print-wrap .bill-company{height:30px;line-height: 30px;}
+.print-wrap .bill-company span{float:left;width:33.3%;}
+.print-wrap table{width:800px;text-align:center;margin-bottom: 30px;}
+.print-wrap table th,.print-wrap table td{height:32px;}
+.print-wrap .bill-num span{float:left;}
+.print-wrap .bill-num .num{width:66.6%;}
+.print-wrap .bill-num,.print-wrap .remarks{height:30px;line-height: 30px;}
+.print-wrap .single-player{padding-left:66.6%;height:30px;line-height: 30px;}

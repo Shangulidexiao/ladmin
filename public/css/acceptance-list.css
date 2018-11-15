@@ -1,0 +1,31 @@
+/* rest*/
+html,body,h1,h2,h3,h4,h5,h6,p,ul,li,ol,dl,dt,dd,div,span,a,b,i,strong,em,img{ padding:0; margin:0;}
+h1,h2,h3,h4,h5,h6{ font-size:100%; line-height:100%; font-weight:normal;}
+body{ font-size:12px;}
+li{ list-style:none;}
+a{ text-decoration:none; color:#666;}
+i,em{ font-style:normal;}
+strong,b{ font-weight:normal;}
+.fl{float:left;}
+.fr{float:right;}
+.clearfix:after{display:block;clear:both;content:'';}
+.clearfix{zoom:1;}
+input{outline:none; border:none 0;padding:0;}
+img{display:block; vertical-align: top}
+li{ list-style:none; vertical-align:top;}
+a img{ border:0; }
+img{display:block;}
+table,th,td,tr{padding:0;}
+table{border-collapse:collapse;}
+
+.acc-wrap{width:800px;margin:0 auto;padding-top:50px;font-size: 16px;line-height:30px;}
+.acc-wrap h1{font-size: 24px;font-weight: bold;text-align:center;line-height: 50px;padding:5px 0;}
+.acc-wrap .section-one{height:30px;padding-bottom:20px;}
+.acc-wrap .section-one span{float:left;width:30%;}
+.acc-wrap .section-one .width60{width:40%;}
+.acc-wrap .section-two span{float:left;width:33.3%;}
+.acc-wrap .font-16{font-size: 16px;font-weight: bold;}
+.acc-wrap .write-name{text-align: right;height:30px;}
+.acc-wrap h2{font-size: 16px;font-weight: bold;line-height:30px;}
+.acc-wrap .prompt-list{line-height: 30px;}
+.acc-wrap .section-four span{float:left;width:50%;}
