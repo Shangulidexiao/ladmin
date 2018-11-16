@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller;
 
-use App\Model\Admin\Category as CategoryModel;
+use App\Http\Controllers\Admin\CommonController;
+use App\Model\Admin\Auth as AuthModel;
 use App\Model\Admin\Admin as AdminModel;
 
-class CategoryController extends Controller
+class AuthController extends CommonController
 {
     /**
      * Display a listing of the resource.
@@ -19,21 +19,20 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $search     = $request->input('search');
-        $auth       = CategoryModel::where('isDel',0);
-        $viewData   = [];
+        $auth       = AuthModel::where('isDel',0);
         if($search){
             $auth->where(function($query) use ($search) {
                 $query->orWhere('name', 'like', "%{$search}%");
             });
         }
-        $auths = $auth->orderBy('orderBy', 'desc')->paginate(10);
+        $auths = $auth->orderBy('id', 'desc')->paginate(10);
 
         $viewData['adder']  = (new AdminModel)->adminByIds($auths);
         $viewData['search'] = $search;
         $viewData['list']   = $auths;
-        $viewData['title']  = '文章类别列表';
+        $viewData['title']  = '菜单管理列表';
         $viewData['show']   = config('admin.show');
-        return view('category/index', $viewData);
+        return view('auth/index', $viewData);
     }
 
     /**
@@ -41,13 +40,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $categoryModel       = new CategoryModel();
-        $viewData['title']      = '创建文章类别';
-        $viewData['topCategory']      = $categoryModel->getTop();
+        $pId        = $request->input('pId');
+        $authModel       = new AuthModel();
+        $tree       = $authModel->createTree(AuthModel::where('isDel',0)->get());
+        $viewData['title']      = '创建菜单';
         $viewData['show']       = config('admin.show');
-        return view('category/create', $viewData);
+        $viewData['pId']        = $pId;
+        $viewData['treeStr']    = $authModel->formatTree($tree,$pId);
+        return view('auth/create', $viewData);
     }
 
     /**
@@ -56,19 +58,25 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, CategoryModel $categoryModel)
+    public function store(Request $request, AuthModel $authModel)
     {
         $this->validate($request, [
     		'name' => 'required',
-    	]);
-        $cateId = $categoryModel->create([
+    		'url'  => 'required',
+        ]);
+        
+        $authId = $authModel->create([
             'name'      => (string)$request->input('name'),
+            'icon'      => (string)$request->input('icon'),
+            'url'       => (string)$request->input('url'),
             'orderBy'   => (int)$request->input('orderBy'),
             'isShow'    => (int)$request->input('isShow'),
-            'pId'  => (int)$request->input('pId'),
+            'parentId'  => (int)$request->input('pId'),
+            'adder'     => (int)$request->adminInfo['id'],
+            'resource'  => (int)$request->input('route'),
         ]);
-        Log::info('创建文章类别-创建者：'.$request->adminInfo['userName'].'-'.$cateId);
-        return redirect('admin/category');
+        Log::info('创建菜单-创建者：'.$request->adminInfo['userName'].'-'.$authId);
+        return redirect('admin/auth');
     }
 
     /**
@@ -90,13 +98,14 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categoryModel       = new CategoryModel();
-        $viewData['topCategory']      = $categoryModel->getTop();
-        $viewData['title']      = '编辑文章类别';
-        $viewData['category']   = $category = CategoryModel::findOrFail($id);
+        $authModel              = new AuthModel();
+        $tree                   = $authModel->createTree(AuthModel::where('isDel',0)->get());
+        $viewData['title']      = '编辑菜单';
+        $viewData['menu']       = $menu = AuthModel::findOrFail($id);
         $viewData['show']       = config('admin.show');
-        $viewData['pId']        = $category['pId'];
-        return view('category/edit', $viewData);
+        $viewData['pId']        = $menu['parentId'];
+        $viewData['treeStr']    = $authModel->formatTree($tree, $menu['parentId']);
+        return view('auth/edit', $viewData);
     }
 
     /**
@@ -110,16 +119,19 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
     		'name' => 'required',
+    		'url'  => 'required',
     	]);
         
-        $categoryModel          = CategoryModel::findOrFail((int)$id);
-        $categoryModel->name        = (string)$request->input('name');
-        $categoryModel->pId         = (int)$request->input('pId');
-        $categoryModel->orderBy     = (int)$request->input('orderBy');
-        $categoryModel->isShow      = (int)$request->input('isShow');
-        $categoryModel->save();
-        Log::info('修改文章类别-修改者：'.$request->adminInfo['userName'].'-'.$id);
-        return redirect('admin/category');
+        $authModel              = AuthModel::findOrFail((int)$id);
+        $authModel->name        = (string)$request->input('name');
+        $authModel->icon        = (string)$request->input('icon');
+        $authModel->url         = (string)$request->input('url');
+        $authModel->parentId    = (int)$request->input('pId');
+        $authModel->orderBy     = (int)$request->input('orderBy');
+        $authModel->isShow      = (int)$request->input('isShow');
+        $authModel->save();
+        Log::info('修改菜单-修改者：'.$request->adminInfo['userName'].'-'.$id);
+        return redirect('admin/auth');
     }
 
     /**
@@ -133,15 +145,15 @@ class CategoryController extends Controller
         if(!$id){
             return ['status'=>0,'msg'=>'删除失败'];
         }
-        $categoryModel               = CategoryModel::findOrFail((int)$id);
-        $categoryModel->isDel        = 1;
-        $categoryModel->updateTime   = time();
-        $categoryModel->save();
-        Log::info('删除文章类别-删除者：'.$request->adminInfo['userName'].'-'.$categoryModel['id']);
+        $authModel          = AuthModel::findOrFail((int)$id);
+        $authModel->isDel        = 1;
+        $authModel->updateTime   = time();
+        $authModel->save();
+        Log::info('删除菜单-删除者：'.$request->adminInfo['userName'].'-'.$authModel['id']);
         return ['status'=>1,'msg'=>'删除成功'];
     }
     
-        /**
+    /**
      * 批量删除
      * @param Request $request
      * @return \Illuminate\Http\Response
@@ -152,8 +164,7 @@ class CategoryController extends Controller
         if(count($ids) < 1){
             return ['status'=>0,'msg'=>'删除失败'];
         }
-        $isSuccess = CategoryModel::whereIn('id',$ids)->update(['isDel'=>1, 'updateTime'=>time()]);
-        Log::info('删除文章类别-删除者：'.$request->adminInfo['userName'].'-'. implode(',', $ids));
+        $isSuccess = AuthModel::whereIn('id',$ids)->update(['isDel'=>1]);
         if($isSuccess){
             return ['status'=>1,'msg'=>'删除成功'];
         }else{

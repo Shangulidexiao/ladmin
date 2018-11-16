@@ -13,5 +13,5 @@ return [
     |
     */
     'pageLogout' => '退出',
-    'pageTitle' => '吕梁长安网',
+    'pageTitle' => '通用后台管理系统',
 ];

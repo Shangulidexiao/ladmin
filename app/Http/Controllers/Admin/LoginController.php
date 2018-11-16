@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Hash;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\CommonController;
 use App\Model\Admin\Admin;
 
 
@@ -26,12 +26,18 @@ class LoginController extends Controller
 
     	$username = $request->input('username');
     	$password = $request->input('password');
+        $captcha = (string)$request->input('code');
+        $sessionCaptcha = (string)$request->session()->get('captcha');
     	$admin = Admin::where('userName',$username)->first();
     	if(!$admin || !Hash::check($password,$admin->password))
     	{
     		return back()->with('errors','errors')
                 ->withInput();
     	}
+        if(strtolower($captcha) !== strtolower($sessionCaptcha)){
+            return back()->with('errors','图片验证码错误')
+                ->withInput();
+        }
 
     	return redirect('admin/default')
                 ->cookie('DESGINADMIN',$username,10080,'/')

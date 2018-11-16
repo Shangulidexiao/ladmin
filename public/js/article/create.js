@@ -26,7 +26,7 @@ ue.ready(function(){
 });
 
 $('#subId').linkage({
-    url:'/article/subCate?sel=0',
+    url:'/admin/article/subCate?sel=0',
     relSel: '#topId' //关联的选择框
 });
 

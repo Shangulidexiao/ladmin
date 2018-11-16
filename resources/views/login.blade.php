@@ -53,7 +53,7 @@
     <body>
         <div class="login-title-wapper clearfix">
             <div class="col-lg-12 col-md-12">
-            <h1 class="login-title text-center">长安网</h1>
+            <h1 class="login-title text-center">通用后台</h1>
             </div>
         </div>
         <!-- animated fadeInDown -->

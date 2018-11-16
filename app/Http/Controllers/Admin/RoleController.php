@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log; 
 
-use App\Http\Controllers\CommonController;
+use App\Http\Controllers\Admin\CommonController;
 use App\Model\Admin\Role        as RoleModel;
 use App\Model\Admin\Admin       as AdminModel;
 use App\Model\Admin\RoleAuth    as RoleAuthModel;

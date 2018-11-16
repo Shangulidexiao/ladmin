@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;
+use Gregwar\Captcha\CaptchaBuilder;
+use App\Http\Controllers\Controller;
 
 class CaptchaController extends Controller
 {

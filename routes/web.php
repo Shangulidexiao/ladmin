@@ -11,7 +11,7 @@
 |
  */
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 //不需要登录的后台模块
     Route::group([], function () {
     //验证码

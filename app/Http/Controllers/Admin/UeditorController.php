@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\CommonController;
+use App\Http\Controllers\Admin\CommonController;
 
 class UeditorController extends CommonController
 {

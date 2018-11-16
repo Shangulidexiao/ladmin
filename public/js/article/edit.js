@@ -33,6 +33,6 @@ ue.ready(function(){
 });
 
 $('#subId').linkage({
-    url:'/article/subCate?sel='+$('input[name="selSubId"]').val()+'&val=' + $('#topId').val(),
+    url:'/admin/article/subCate?sel='+$('input[name="selSubId"]').val()+'&val=' + $('#topId').val(),
     relSel: '#topId' //关联的选择框
 });
