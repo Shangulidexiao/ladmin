@@ -32,7 +32,7 @@ class RoleController extends CommonController
         $viewData['search'] = $search;
         $viewData['list']   = $roles;
         $viewData['title']  = '角色管理列表';
-        return view('role/index', $viewData);
+        return view('admin/role/index', $viewData);
     }
 
     /**
@@ -45,7 +45,7 @@ class RoleController extends CommonController
         $viewData['title']  = '创建角色';
         $roleModel          = new RoleModel();
         $viewData['zTree']  = json_encode($roleModel->getZTreeData());
-        return view('role/create', $viewData);
+        return view('admin/role/create', $viewData);
     }
 
     /**
@@ -104,7 +104,7 @@ class RoleController extends CommonController
         $viewData['role']   = $roleModel;
         $roleModel          = new RoleModel();
         $viewData['zTree']  = json_encode($roleModel->getZTreeData($id));
-        return view('role/edit', $viewData);
+        return view('admin/role/edit', $viewData);
     }
 
     /**

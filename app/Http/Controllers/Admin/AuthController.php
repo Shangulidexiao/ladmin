@@ -32,7 +32,7 @@ class AuthController extends CommonController
         $viewData['list']   = $auths;
         $viewData['title']  = '菜单管理列表';
         $viewData['show']   = config('admin.show');
-        return view('auth/index', $viewData);
+        return view('admin/auth/index', $viewData);
     }
 
     /**
@@ -49,7 +49,7 @@ class AuthController extends CommonController
         $viewData['show']       = config('admin.show');
         $viewData['pId']        = $pId;
         $viewData['treeStr']    = $authModel->formatTree($tree,$pId);
-        return view('auth/create', $viewData);
+        return view('admin/auth/create', $viewData);
     }
 
     /**
@@ -105,7 +105,7 @@ class AuthController extends CommonController
         $viewData['show']       = config('admin.show');
         $viewData['pId']        = $menu['parentId'];
         $viewData['treeStr']    = $authModel->formatTree($tree, $menu['parentId']);
-        return view('auth/edit', $viewData);
+        return view('admin/auth/edit', $viewData);
     }
 
     /**

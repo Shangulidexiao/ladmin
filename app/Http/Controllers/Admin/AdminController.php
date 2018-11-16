@@ -36,7 +36,7 @@ class AdminController extends CommonController
         $viewData['search'] = $search;
         $viewData['list'] = $admins;
         $viewData['title'] = '人员管理列表';
-        return view('admin/index', $viewData);
+        return view('admin/admin/index', $viewData);
     }
 
     /**
@@ -49,7 +49,7 @@ class AdminController extends CommonController
         $roleIdName = (new RoleModel())->idNames();
         $viewData['title'] = '创建管理员';
         $viewData['roleName'] = $roleIdName;
-        return view('admin/create', $viewData);
+        return view('admin/admin/create', $viewData);
     }
 
     /**
@@ -118,7 +118,7 @@ class AdminController extends CommonController
         $viewData['admin']      = $admin;
         $viewData['roleName']   = $roleIdName;
         $viewData['roleIds']    = $roleIds;
-        return view('admin/edit', $viewData);
+        return view('admin/admin/edit', $viewData);
     }
 
     /**

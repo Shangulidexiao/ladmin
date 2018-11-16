@@ -11,6 +11,6 @@ class IndexController extends CommonController
     public function index(Request $request)
     {
         $viewData['title'] = '首页';
-        return view('index', $viewData);
+        return view('admin/index', $viewData);
     }
 }

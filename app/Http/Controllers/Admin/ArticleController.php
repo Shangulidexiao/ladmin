@@ -35,7 +35,7 @@ class ArticleController extends CommonController
         $viewData['list']   = $articles;
         $viewData['title']  = '文章列表';
         $viewData['show']   = config('admin.show');
-        return view('article/index', $viewData);
+        return view('admin/article/index', $viewData);
     }
 
     /**
@@ -49,7 +49,7 @@ class ArticleController extends CommonController
         $viewData['title']              = '创建文章';
         $categoryModel                  = new CategoryModel();
         $viewData['topCategory']        = $categoryModel->getTop();
-        return view('article/create', $viewData);
+        return view('admin/article/create', $viewData);
     }
 
     /**
@@ -115,7 +115,7 @@ class ArticleController extends CommonController
 		$viewData['subCategory']= $categoryModel->getSub(['kv'=>1]);
         $viewData['title']      = '编辑文章';
         $viewData['show']       = config('admin.show');
-        return view('article/edit', $viewData);
+        return view('admin/article/edit', $viewData);
 
     }
 

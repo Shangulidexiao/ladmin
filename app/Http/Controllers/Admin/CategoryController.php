@@ -33,7 +33,7 @@ class CategoryController extends CommonController
         $viewData['list']   = $auths;
         $viewData['title']  = '文章类别列表';
         $viewData['show']   = config('admin.show');
-        return view('category/index', $viewData);
+        return view('admin/category/index', $viewData);
     }
 
     /**
@@ -47,7 +47,7 @@ class CategoryController extends CommonController
         $viewData['title']      = '创建文章类别';
         $viewData['topCategory']      = $categoryModel->getTop();
         $viewData['show']       = config('admin.show');
-        return view('category/create', $viewData);
+        return view('admin/category/create', $viewData);
     }
 
     /**
@@ -96,7 +96,7 @@ class CategoryController extends CommonController
         $viewData['category']   = $category = CategoryModel::findOrFail($id);
         $viewData['show']       = config('admin.show');
         $viewData['pId']        = $category['pId'];
-        return view('category/edit', $viewData);
+        return view('admin/category/edit', $viewData);
     }
 
     /**

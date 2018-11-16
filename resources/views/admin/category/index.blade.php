@@ -1,7 +1,7 @@
-@extends('layouts.admin')
+@extends('admin.layouts.admin')
 
 @push('metas')
-<meta name="description" content="角色列表" />
+<meta name="description" content="文章类别列表" />
 @endpush
 
 @push('links')
@@ -10,7 +10,6 @@
 
 @push('scripts') 
 <script src="{{asset('js/datatable/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('js/datatable/ZeroClipboard.js')}}"></script>
 <script src="{{asset('js/datatable/dataTables.tableTools.min.js')}}"></script>
 <script src="{{asset('js/datatable/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{asset('js/datatable/datatables-init.js')}}"></script>
@@ -20,12 +19,12 @@
 @section('content')
 <div class="row">
     {{ csrf_field() }}
-    <input type="hidden" name="delete-url" value="{{ url('admin/role') }}">
-    <input type="hidden" name="delete-all-url" value="{{ url('admin/role/deleteAll') }}">
+    <input type="hidden" name="delete-url" value="{{ url('admin/category') }}">
+    <input type="hidden" name="delete-all-url" value="{{ url('admin/category/deleteAll') }}">
     <div class="col-xs-12 col-md-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue rep-header-height">
-                <span class="widget-caption">角色列表</span>
+                <span class="widget-caption">文章类别列表</span>
                 <div class="widget-buttons">
                     <a href="#" data-toggle="maximize">
                         <i class="fa fa-expand"></i>
@@ -43,17 +42,17 @@
                     <!--search start-->
                     <div id="searchable_filter" class="dataTables_filter">
                         <div class="row">
-                            <div class="col-sm-11 col-lg-11">
+                            <div class="col-sm-10 col-lg-11">
                                 <form class="form-group">
                                     <label>
-                                        <input type="search" class="form-control input-sm" name="search" aria-controls="searchable" placeholder="角色名" value="{{ $search or '' }}">
+                                        <input type="search" class="form-control input-sm" name="search" aria-controls="searchable" placeholder="文章类别名称" value="{{ $search or '' }}">
                                     </label>  
                                     <button type="submit" class="btn btn-success col-md-push-1 col-lg-push-1 col-xs-push-1 col-sm-push-1" > <i class="fa  fa-search"></i>查询</button>
                                 </form>
                                 <button class="btn btn-danger pull-right delete-more"> <i class="fa fa-times"></i>批量删除</button>
                             </div>
-                            <div  class="col-sm-1 col-lg-1">
-                                <a class="btn btn-default purple" href="{{ url('admin/role/create') }}"><i class="fa fa-plus"></i>添加</a>
+                            <div  class="col-sm-2 col-lg-1">
+                                <a class="btn btn-default purple add-menu" href="{{ url('admin/category/create') }}" title="添加文章类别"><i class="fa fa-plus"></i>添加</a>
                             </div>
                         </div>
                     </div>
@@ -72,10 +71,10 @@
                                     </div>
                                 </th>
                                 <th>
-                                    角色名
+                                    类别名称
                                 </th>
                                 <th>
-                                    添加者
+                                    显示
                                 </th>
                                 <th class="center">
                                     操作
@@ -98,10 +97,10 @@
                                         {{ $item->name }}
                                     </td>
                                     <td class="center ">
-                                        {{ empty($adder[$item->adder]) ? '-' : $adder[$item->adder]}}
+                                        {{ $show[$item->isShow]}}
                                     </td>
                                     <td class="center ">
-                                        <a class="btn btn-success" href="{{ url('admin/role/' . $item->id . '/edit') }}"><i class="fa fa-edit"></i>编辑</a>
+                                        <a class="btn btn-success" href="{{ url('admin/category/' . $item->id . '/edit') }}"><i class="fa fa-edit"></i>编辑</a>
                                         <button class="btn btn-danger desgin-delete" data-id="{{ $item->id}}"> <i class="fa fa-times"></i>删除</button>
                                     </td>
                                 </tr>

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('admin.layouts.admin')
 
 @push('metas')
 <meta name="description" content="菜单列表" />

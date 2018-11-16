@@ -1,7 +1,7 @@
-@extends('layouts.admin')
+@extends('admin.layouts.admin')
 
 @push('metas')
-<meta name="description" content="菜单列表" />
+<meta name="description" content="Dashboard" />
 @endpush
 
 @push('links')
@@ -14,18 +14,17 @@
 <script src="{{asset('js/datatable/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{asset('js/datatable/datatables-init.js')}}"></script>
 <script src="{{asset('js/common/listDelete.js')}}"></script>
-<script src="{{asset('js/article/list.js')}}"></script>
 @endpush
 
 @section('content')
 <div class="row">
     {{ csrf_field() }}
-    <input type="hidden" name="delete-url" value="{{ url('admin/article') }}">
-    <input type="hidden" name="delete-all-url" value="{{ url('admin/article/deleteAll') }}">
+    <input type="hidden" name="delete-url" value="{{ url('admin/admin') }}">
+    <input type="hidden" name="delete-all-url" value="{{ url('admin/admin/deleteAll') }}">
     <div class="col-xs-12 col-md-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue rep-header-height">
-                <span class="widget-caption">文章列表</span>
+                <span class="widget-caption">管理员列表</span>
                 <div class="widget-buttons">
                     <a href="#" data-toggle="maximize">
                         <i class="fa fa-expand"></i>
@@ -43,17 +42,17 @@
                     <!--search start-->
                     <div id="searchable_filter" class="dataTables_filter">
                         <div class="row">
-                            <div class="col-sm-10 col-lg-11">
+                            <div class="col-sm-11 col-lg-11">
                                 <form class="form-group">
                                     <label>
-                                        <input type="search" class="form-control input-sm" name="search" aria-controls="searchable" placeholder="文章名称" value="{{ $search or '' }}">
+                                        <input type="search" class="form-control input-sm" name="search" aria-controls="searchable" placeholder="用户名、手机号" value="{{ $search or '' }}">
                                     </label>  
                                     <button type="submit" class="btn btn-success col-md-push-1 col-lg-push-1 col-xs-push-1 col-sm-push-1" > <i class="fa  fa-search"></i>查询</button>
                                 </form>
                                 <button class="btn btn-danger pull-right delete-more"> <i class="fa fa-times"></i>批量删除</button>
                             </div>
-                            <div  class="col-sm-2 col-lg-1">
-                                <a class="btn btn-default purple add-menu" href="{{ url('admin/article/create') }}" title="添加文章"><i class="fa fa-plus"></i>添加</a>
+                            <div  class="col-sm-1 col-lg-1">
+                                <a class="btn btn-default purple" href="{{ url('admin/admin/create') }}"><i class="fa fa-plus"></i>添加</a>
                             </div>
                         </div>
                     </div>
@@ -72,22 +71,19 @@
                                     </div>
                                 </th>
                                 <th>
-                                   标题 
+                                    账号
                                 </th>
                                 <th>
-									一级类别
+                                    姓名
                                 </th>
                                 <th>
-                                 	二级类别   
-                                </th>
-								<th>
-									简介
-								</th>
-                                <th>
-                                    显示
+                                    邮箱
                                 </th>
                                 <th>
-                                    添加人
+                                    手机号
+                                </th>
+                                <th>
+                                    添加者
                                 </th>
                                 <th class="center">
                                     操作
@@ -95,7 +91,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if($list)
+                            @if ($list)
                                 @foreach ($list as $item)
                                 <tr>
                                     <td>
@@ -107,25 +103,22 @@
                                         </div>
                                     </td>
                                     <td>
-                                        {{ $item->title }}
+                                        {{ $item->userName }}
                                     </td>
                                     <td>
-                                        {{ $categorys[$item->topId] }}
+                                        {{ $item->trueName}}
                                     </td>
                                     <td>
-                                        {{empty($categorys[$item->subId]) ? '-' : $categorys[$item->subId]}}
-                                    </td>
-                                    <td>
-                                        {{ $item->intro }}
+                                        <a href="mailto:{{ $item->email}}">{{ $item->email}}</a>
                                     </td>
                                     <td class="center ">
-                                        {{ $show[$item->isShow] }}
+                                        {{ $item->mobile}}
                                     </td>
                                     <td class="center ">
                                         {{ empty($adder[$item->adder]) ? '-' : $adder[$item->adder]}}
                                     </td>
                                     <td class="center ">
-                                        <a class="btn btn-success" href="{{ url('admin/article/' . $item->id . '/edit') }}"><i class="fa fa-edit"></i>编辑</a>
+                                        <a class="btn btn-success" href="{{ url('admin/admin/' . $item->id . '/edit') }}"><i class="fa fa-edit"></i>编辑</a>
                                         <button class="btn btn-danger desgin-delete" data-id="{{ $item->id}}"> <i class="fa fa-times"></i>删除</button>
                                     </td>
                                 </tr>
@@ -136,7 +129,6 @@
 
                     <!--table start-->
                     <!--pagination start-->
-                    @if ($list)
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="dataTables_info" id="simpledatatable_info" role="alert" aria-live="polite" aria-relevant="all">
@@ -149,7 +141,6 @@
                             </div>
                         </div>
                     </div>
-                    @endif
                     <!--pagination end-->
                 </div>
             </div>

@@ -11,6 +11,10 @@
 |
  */
 
+Route::group(['namespace' => 'Home'], function () {
+    Route::get('/', 'IndexController@index');
+    Route::resource('index', 'IndexController');
+});
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 //不需要登录的后台模块
     Route::group([], function () {
