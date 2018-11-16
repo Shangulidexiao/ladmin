@@ -22,9 +22,7 @@ class AdminController extends CommonController
     {
         $search = $request->input('search');
         $admin = AdminModel::where('isDel',0);
-        $viewData = [];
         if($search){
-            $viewData['search'] = $search;
             $admin->where(function($query) use ($search) {
                 $query->orWhere('userName', 'like', "%{$search}%")
                         ->orWhere('trueName', 'like', "%{$search}%")
@@ -35,6 +33,7 @@ class AdminController extends CommonController
         
         $admins = $admin->orderBy('orderBy', 'desc')->paginate(10);
         $viewData['adder'] = (new AdminModel)->adminByIds($admins);
+        $viewData['search'] = $search;
         $viewData['list'] = $admins;
         $viewData['title'] = '人员管理列表';
         return view('admin/index', $viewData);

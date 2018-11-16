@@ -22,7 +22,6 @@ class CategoryController extends Controller
         $auth       = CategoryModel::where('isDel',0);
         $viewData   = [];
         if($search){
-            $viewData['search'] = $search;
             $auth->where(function($query) use ($search) {
                 $query->orWhere('name', 'like', "%{$search}%");
             });
@@ -30,6 +29,7 @@ class CategoryController extends Controller
         $auths = $auth->orderBy('orderBy', 'desc')->paginate(10);
 
         $viewData['adder']  = (new AdminModel)->adminByIds($auths);
+        $viewData['search'] = $search;
         $viewData['list']   = $auths;
         $viewData['title']  = '文章类别列表';
         $viewData['show']   = config('admin.show');

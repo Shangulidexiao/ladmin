@@ -20,9 +20,7 @@ class AuthController extends CommonController
     {
         $search     = $request->input('search');
         $auth       = AuthModel::where('isDel',0);
-        $viewData   = [];
         if($search){
-            $viewData['search'] = $search;
             $auth->where(function($query) use ($search) {
                 $query->orWhere('name', 'like', "%{$search}%");
             });
@@ -30,6 +28,7 @@ class AuthController extends CommonController
         $auths = $auth->orderBy('id', 'desc')->paginate(10);
 
         $viewData['adder']  = (new AdminModel)->adminByIds($auths);
+        $viewData['search'] = $search;
         $viewData['list']   = $auths;
         $viewData['title']  = '菜单管理列表';
         $viewData['show']   = config('admin.show');

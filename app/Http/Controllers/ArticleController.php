@@ -21,9 +21,7 @@ class ArticleController extends CommonController
     {
         $search     = $request->input('search');
         $articleModel       = ArticleModel::where('isDel',0);
-        $viewData   = [];
         if($search){
-            $viewData['search'] = $search;
             $articleModel->where(function($query) use ($search) {
                 $query->orWhere('title', 'like', "%{$search}%");
             });
@@ -32,6 +30,7 @@ class ArticleController extends CommonController
 
         $categoryModel                  = new CategoryModel();
         $viewData['categorys']        = $categoryModel->getAll(['kv' => 1]);
+        $viewData['search'] = $search;
         $viewData['adder']  = (new AdminModel)->adminByIds($articles);
         $viewData['list']   = $articles;
         $viewData['title']  = '文章列表';

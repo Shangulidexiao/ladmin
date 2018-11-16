@@ -21,9 +21,7 @@ class RoleController extends CommonController
     {
         $search     = $request->input('search');
         $roleModel       = RoleModel::where('isDel',0);
-        $viewData   = [];
         if($search){
-            $viewData['search'] = $search;
             $roleModel->where(function($query) use ($search) {
                 $query->orWhere('name', 'like', "%{$search}%");
             });
@@ -31,6 +29,7 @@ class RoleController extends CommonController
         
         $roles              = $roleModel->orderBy('orderBy', 'desc')->paginate(10);
         $viewData['adder']  = (new AdminModel)->adminByIds($roles);
+        $viewData['search'] = $search;
         $viewData['list']   = $roles;
         $viewData['title']  = '角色管理列表';
         return view('role/index', $viewData);
