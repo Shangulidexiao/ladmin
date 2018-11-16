@@ -25,7 +25,7 @@
             </div>
             <div class="widget-body">
                 <div>
-                    <form id="defaultForm" role="form" action="{{ url('article/' . $article->id ) }}" method="POST">
+                    <form id="defaultForm" role="form" action="{{ url('admin/article/' . $article->id ) }}" method="POST">
                         {{ csrf_field() }}
 						{{ method_field('PUT') }}
                         <div class="form-title">类别信息<span></span></div>

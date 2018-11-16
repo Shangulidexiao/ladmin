@@ -19,7 +19,7 @@ class AdminLogin
         $uId = $request->cookie('DESGINUID');
         
         if ( md5($userName) !== $uId) {
-            return redirect('admin/login');
+            return redirect('admin/admin/login');
         }
         $request->userName = $userName;
         return $next($request);

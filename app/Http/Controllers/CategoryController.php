@@ -68,7 +68,7 @@ class CategoryController extends Controller
             'pId'  => (int)$request->input('pId'),
         ]);
         Log::info('创建文章类别-创建者：'.$request->adminInfo['userName'].'-'.$cateId);
-        return redirect('category');
+        return redirect('admin/category');
     }
 
     /**
@@ -119,7 +119,7 @@ class CategoryController extends Controller
         $categoryModel->isShow      = (int)$request->input('isShow');
         $categoryModel->save();
         Log::info('修改文章类别-修改者：'.$request->adminInfo['userName'].'-'.$id);
-        return redirect('category');
+        return redirect('admin/category');
     }
 
     /**

@@ -22,7 +22,7 @@
             </div>
             <div class="widget-body">
                 <div>
-                    <form id="defaultForm" role="form" action="{{ url('auth/') }}" method="POST">
+                    <form id="defaultForm" role="form" action="{{ url('admin/auth/') }}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-title">菜单信息<span></span></div>
                         <div class="row">

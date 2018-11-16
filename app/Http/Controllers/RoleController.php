@@ -77,7 +77,7 @@ class RoleController extends CommonController
             $roleAuthModel->insertAuthIds($roleId, $authIds);
         }
         Log::info('创建角色-创建者：'.$request->adminInfo['userName'].'-'.$roleId);
-        return redirect('role');
+        return redirect('admin/role');
     }
 
     /**
@@ -137,7 +137,7 @@ class RoleController extends CommonController
         }else{
             $roleAuthModel->deleteAuthIds($id);
         }
-        return redirect('role');
+        return redirect('admin/role');
     }
 
     /**

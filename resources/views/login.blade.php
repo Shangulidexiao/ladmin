@@ -60,7 +60,7 @@
         <div class="login-container">
             <div class="login-form-white">
                 <div class="loginbox">
-                    <form action="{{url('login/login')}}" method="post" class="">
+                    <form action="{{url('admin/login/login')}}" method="post" class="">
                         {{ csrf_field() }}
                         <div class="loginbox-title margin-bottom-30 padding-top-20">@lang('login.pageName')</div>
 
@@ -84,7 +84,7 @@
                                 <input type="text" class="form-control" name="code" placeholder="请输入验证码" />
                             </div>
                             <div class="col-md-6 loginbox-code-img captcha-main">
-                                <img id="captcha-img" base-src="{{url('captcha')}}" src="{{url('captcha')}}" width="100%" height="100%" alt="">
+                                <img id="captcha-img" base-src="{{url('admin/captcha')}}" src="{{url('admin/captcha')}}" width="100%" height="100%" alt="">
                             </div>  
                         </div>
                         <div class="loginbox-submit">

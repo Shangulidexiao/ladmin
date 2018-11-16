@@ -22,7 +22,7 @@
             </div>
             <div class="widget-body">
                 <div>
-                    <form id="defaultForm" role="form" action="{{ url('admin/' . $admin->id) }}" method="POST">
+                    <form id="defaultForm" role="form" action="{{ url('admin/admin/' . $admin->id) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="form-title">人员信息<span></span></div>

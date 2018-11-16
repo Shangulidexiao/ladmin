@@ -33,14 +33,14 @@ class LoginController extends Controller
                 ->withInput();
     	}
 
-    	return redirect('default')
+    	return redirect('admin/default')
                 ->cookie('DESGINADMIN',$username,10080,'/')
                 ->cookie('DESGINUID',md5($username),10080,'/');
     }
     
     public function logout()
     {
-        return redirect('login')
+        return redirect('admin/login')
                 ->cookie('DESGINADMIN',null,-1,'/')
                 ->cookie('DESGINUID',null,-1,'/');
     }

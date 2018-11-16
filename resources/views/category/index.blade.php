@@ -19,8 +19,8 @@
 @section('content')
 <div class="row">
     {{ csrf_field() }}
-    <input type="hidden" name="delete-url" value="{{ url('category') }}">
-    <input type="hidden" name="delete-all-url" value="{{ url('category/deleteAll') }}">
+    <input type="hidden" name="delete-url" value="{{ url('admin/category') }}">
+    <input type="hidden" name="delete-all-url" value="{{ url('admin/category/deleteAll') }}">
     <div class="col-xs-12 col-md-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue rep-header-height">
@@ -52,7 +52,7 @@
                                 <button class="btn btn-danger pull-right delete-more"> <i class="fa fa-times"></i>批量删除</button>
                             </div>
                             <div  class="col-sm-2 col-lg-1">
-                                <a class="btn btn-default purple add-menu" href="{{ url('category/create') }}" title="添加文章类别"><i class="fa fa-plus"></i>添加</a>
+                                <a class="btn btn-default purple add-menu" href="{{ url('admin/category/create') }}" title="添加文章类别"><i class="fa fa-plus"></i>添加</a>
                             </div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                                         {{ $show[$item->isShow]}}
                                     </td>
                                     <td class="center ">
-                                        <a class="btn btn-success" href="{{ url('category/' . $item->id . '/edit') }}"><i class="fa fa-edit"></i>编辑</a>
+                                        <a class="btn btn-success" href="{{ url('admin/category/' . $item->id . '/edit') }}"><i class="fa fa-edit"></i>编辑</a>
                                         <button class="btn btn-danger desgin-delete" data-id="{{ $item->id}}"> <i class="fa fa-times"></i>删除</button>
                                     </td>
                                 </tr>

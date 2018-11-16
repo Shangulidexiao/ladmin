@@ -33,7 +33,7 @@ class AdminInfo
         //二级菜单id 用于菜单展示
         $subMenuId = isset($currentMenu->id) ? $currentMenu->id : 0;;
         if(!$adminInfo){
-            return redirect('admin/login');
+            return redirect('admin/admin/login');
         }
         // 后台页面的管理员信息
         view()->share('adminInfo',$adminInfo);

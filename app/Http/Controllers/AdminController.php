@@ -89,7 +89,7 @@ class AdminController extends CommonController
         }
         
         Log::info('创建管理员-创建者：'.$request->adminInfo['userName'].'-'.$adminId);
-        return redirect('admin');
+        return redirect('admin/admin');
     }
 
     /**
@@ -157,7 +157,7 @@ class AdminController extends CommonController
             $adminRole->deleteRole($id);
         }
         Log::info('修改管理员-修改者：'.$request->adminInfo['userName'].'-'.$admin['id']);
-        return redirect('admin');
+        return redirect('admin/admin');
     }
 
     /**

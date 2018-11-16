@@ -79,7 +79,7 @@ class ArticleController extends CommonController
             'adder'      => (int)$request->adminInfo['id'],
         ]);
         Log::info('创建文章-创建者：' . $request->adminInfo['userName'] . '-'.$articleId);
-        return redirect('article');
+        return redirect('admin/article');
     }
 
     /**
@@ -146,7 +146,7 @@ class ArticleController extends CommonController
         $articleModel->subId        = (int)$request->input('subId');
         $articleModel->save();
         Log::info('修改文章-修改者：'.$request->adminInfo['userName'].'-'.$id);
-        return redirect('article');
+        return redirect('admin/article');
     }
 
     /**

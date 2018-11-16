@@ -26,7 +26,7 @@ class Auth
         $currentAuthId = $authModel->getAuthIdByRouteName($routeName);
         
         if(!is_array($authIds) || !in_array($currentAuthId, $authIds)){
-            return redirect('/admin/default');
+            return redirect('admin/admin/default');
         }
         return $next($request);
     }

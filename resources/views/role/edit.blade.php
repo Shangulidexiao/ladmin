@@ -28,7 +28,7 @@ var zNodes = {!! $zTree !!};
             </div>
             <div class="widget-body">
                 <div>
-                    <form id="defaultForm" role="form" action="{{ url('role/' . $role->id) }}" method="POST">
+                    <form id="defaultForm" role="form" action="{{ url('admin/role/' . $role->id) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="form-title">角色信息<span></span></div>

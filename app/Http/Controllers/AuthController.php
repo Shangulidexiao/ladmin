@@ -76,7 +76,7 @@ class AuthController extends CommonController
             'resource'  => (int)$request->input('route'),
         ]);
         Log::info('创建菜单-创建者：'.$request->adminInfo['userName'].'-'.$authId);
-        return redirect('auth');
+        return redirect('admin/auth');
     }
 
     /**
@@ -131,7 +131,7 @@ class AuthController extends CommonController
         $authModel->isShow      = (int)$request->input('isShow');
         $authModel->save();
         Log::info('修改菜单-修改者：'.$request->adminInfo['userName'].'-'.$id);
-        return redirect('auth');
+        return redirect('admin/auth');
     }
 
     /**

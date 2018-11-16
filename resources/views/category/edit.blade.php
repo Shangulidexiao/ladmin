@@ -22,7 +22,7 @@
             </div>
             <div class="widget-body">
                 <div>
-                    <form id="defaultForm" role="form" action="{{ url('category/' . $category->id) }}" method="POST">
+                    <form id="defaultForm" role="form" action="{{ url('admin/category/' . $category->id) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="form-title">文章类别信息<span></span></div>

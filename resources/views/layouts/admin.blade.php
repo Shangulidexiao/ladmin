@@ -119,7 +119,7 @@
                                         </li>
                                         <!--/Theme Selector Area-->
                                         <li class="dropdown-footer">
-                                            <a href="{{ url('logout') }}">
+                                            <a href="{{ url('admin/logout') }}">
                                                 @lang('index.pageLogout')
                                             </a>
                                         </li>
@@ -132,7 +132,7 @@
                                 <!-- Settings -->
                             </ul>
                             <div class="setting">
-                                <a id="logout" title="@lang('index.pageLogout')" href="{{ url('logout') }}">
+                                <a id="logout" title="@lang('index.pageLogout')" href="{{ url('admin/logout') }}">
                                     <i class="icon glyphicon glyphicon-off"></i>
                                 </a>
                             </div>

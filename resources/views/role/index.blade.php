@@ -20,8 +20,8 @@
 @section('content')
 <div class="row">
     {{ csrf_field() }}
-    <input type="hidden" name="delete-url" value="{{ url('role') }}">
-    <input type="hidden" name="delete-all-url" value="{{ url('role/deleteAll') }}">
+    <input type="hidden" name="delete-url" value="{{ url('admin/role') }}">
+    <input type="hidden" name="delete-all-url" value="{{ url('admin/role/deleteAll') }}">
     <div class="col-xs-12 col-md-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue rep-header-height">
@@ -53,7 +53,7 @@
                                 <button class="btn btn-danger pull-right delete-more"> <i class="fa fa-times"></i>批量删除</button>
                             </div>
                             <div  class="col-sm-1 col-lg-1">
-                                <a class="btn btn-default purple" href="{{ url('role/create') }}"><i class="fa fa-plus"></i>添加</a>
+                                <a class="btn btn-default purple" href="{{ url('admin/role/create') }}"><i class="fa fa-plus"></i>添加</a>
                             </div>
                         </div>
                     </div>
@@ -98,10 +98,10 @@
                                         {{ $item->name }}
                                     </td>
                                     <td class="center ">
-                                        {{ $adder[$item->adder] or '-'}}
+                                        {{ empty($adder[$item->adder]) ? '-' : $adder[$item->adder]}}
                                     </td>
                                     <td class="center ">
-                                        <a class="btn btn-success" href="{{ url('role/' . $item->id . '/edit') }}"><i class="fa fa-edit"></i>编辑</a>
+                                        <a class="btn btn-success" href="{{ url('admin/role/' . $item->id . '/edit') }}"><i class="fa fa-edit"></i>编辑</a>
                                         <button class="btn btn-danger desgin-delete" data-id="{{ $item->id}}"> <i class="fa fa-times"></i>删除</button>
                                     </td>
                                 </tr>
