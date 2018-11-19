@@ -45,9 +45,9 @@
                         <div class="row">
                             <div class="col-sm-12 col-lg-6 col-xs-6">
                                 <div class="form-group">
-                                    <label for="name">文章啊类别名</label>
+                                    <label for="name">文章类别名</label>
                                     <span class="input-icon icon-right">
-                                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="菜单名">
+                                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="文章类别名">
                                         <i class="fa fa-stack-exchange palegreen"></i>
                                     </span>
                                 </div>
